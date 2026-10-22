@@ -52,6 +52,13 @@ class CarSaleIntegrationTest {
     }
 
     @Test
+    void blocksH2ConsoleOutsideDevelopment() throws Exception {
+        mvc.perform(get("/h2-console/"))
+                .andExpect(status().isUnauthorized())
+                .andExpect(header().string("X-Frame-Options", "DENY"));
+    }
+
+    @Test
     void listsCarsPubliclyWithoutLeakingCredentials() throws Exception {
         mvc.perform(get("/cars"))
                 .andExpect(status().isOk())

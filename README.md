@@ -58,9 +58,24 @@ O perfil padrão é `dev`. A carga inicial em `src/main/resources/data.sql` mant
 | Bob Johnson | `bob.johnson` | `ROLE_USER` |
 | Charlie Brown | `charlie.brown` | `ROLE_USER` |
 
-Os hashes BCrypt originais foram preservados. Entre com as senhas fornecidas no material da aula; o SQL armazena somente os hashes, não as senhas em texto. Não há geração de novas senhas nem criação das contas `admin` e `usuario`.
+As três contas receberam novas senhas individuais, entregues separadamente ao responsável pelo projeto. O H2 armazena apenas os hashes BCrypt carregados de `data.sql`; as senhas em texto não são publicadas neste repositório. Os hashes da carga inicial são fixos, portanto as senhas permanecem as mesmas após reiniciar. As contas `admin` e `usuario` não são criadas.
 
 O H2 fica em memória: dados e comentários são reiniciados ao encerrar a aplicação. As chaves RSA locais também são temporárias, portanto um reinício invalida tokens anteriores. Faça login novamente após reiniciar o backend.
+
+## Acessar o H2
+
+No perfil padrão `dev`, com o backend em execução na própria máquina, abra [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
+
+| Campo | Valor |
+| --- | --- |
+| Driver Class | `org.h2.Driver` |
+| JDBC URL | `jdbc:h2:mem:carsale` |
+| User Name | `sa` |
+| Password | Deixe vazio |
+
+Clique em **Connect**. Para consultar as contas, execute `SELECT id, name, username, role FROM users;`. A senha do banco é diferente da senha de login da aplicação. A coluna `password` contém hashes BCrypt, não permite visualizar as senhas originais.
+
+As configurações do console ficam em `src/main/resources/application-dev.properties` e `DevelopmentH2SecurityConfig.java`. O console aceita somente conexões locais, usa frames da mesma origem e não recebe liberação de acesso quando `prod` está ativo. As regras de autenticação e autorização da API continuam na cadeia principal.
 
 ## Endpoints e permissões
 
@@ -82,7 +97,7 @@ Login:
 ```json
 {
   "username": "bob.johnson",
-  "password": "senha original do exercício"
+  "password": "senha entregue para Bob"
 }
 ```
 

@@ -7,6 +7,6 @@ INSERT INTO cars (brand, model, image_url, description) VALUES
 ('BMW', 'X5', 'https://grandbrasil.com.br/wp-content/uploads/2020/02/5c1b0-grupo-de-mc3a1scara-1.webp', 'Premium mid-size SUV with advanced features');
 
 INSERT INTO users (name, username, password, role) VALUES
-('Alice Smith', 'alice.smith', '$2a$12$h3cu/Kp00GspyxPqq9GOjeM0ZaY2679ESM50m8ohPsHClhN.YrQTa', 'ROLE_ADMIN'),
-('Bob Johnson', 'bob.johnson', '$2a$12$bY8yIX2ahPwy.ADZciIs7OKV7LPzDktzirb521OtTv8cch4Ta6WaK', 'ROLE_USER'),
-('Charlie Brown', 'charlie.brown', '$2a$12$MO7apjxKdvmPlCe0Q3Vv9.ceEwk877lj25c/q6EaJZk1whnyV/H9W', 'ROLE_USER');
+('Alice Smith', 'alice.smith', '$2a$12$EeR8uG/7vAK8w36C2jtNJ.SZ7r8oEbUZMD.VyfFqb1v15oJRsG0U2', 'ROLE_ADMIN'),
+('Bob Johnson', 'bob.johnson', '$2a$12$I/acKmHHTFi5NIr9Nz.MduBemaaTgJg3oHtVdPYKjXXXuIXPEjy7m', 'ROLE_USER'),
+('Charlie Brown', 'charlie.brown', '$2a$12$RejdysWtClnBHeIS9ZIb8OZFGQDdbSOvG7HOIuLja1nf3uOiW3t7i', 'ROLE_USER');
