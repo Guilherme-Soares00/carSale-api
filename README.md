@@ -144,3 +144,12 @@ Os testes exercitam o banco H2, o encoder BCrypt, emissão e validação reais d
 | `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` | Conexão externa no perfil `prod` |
 
 O perfil `prod` desativa carga demonstrativa e criação automática de tabelas, exige um par RSA correspondente de pelo menos 2048 bits e valida o esquema do banco. O driver incluído é H2; outro banco exige seu driver JDBC e provisionamento do esquema. Esta entrega é voltada ao exercício local. Para publicação, configure HTTPS, provisionamento de usuários, migrations e limitação de tentativas de login conforme o ambiente.
+
+## Créditos das imagens
+
+As fotografias substituídas são disponibilizadas pela Wikimedia Commons sob a licença [Creative Commons Atribuição-CompartilhaIgual 4.0](https://creativecommons.org/licenses/by-sa/4.0/). São usadas as URLs dos arquivos originais, sem edição das imagens.
+
+| Carro | Fotógrafo | Fonte |
+| --- | --- | --- |
+| Toyota Corolla | Kevauto | [2020 Toyota Corolla SE, front 2.29.20.jpg](https://commons.wikimedia.org/wiki/File:2020_Toyota_Corolla_SE,_front_2.29.20.jpg) |
+| Ford Mustang | Vauxford | [2018 Ford Mustang GT 5.0 Front.jpg](https://commons.wikimedia.org/wiki/File:2018_Ford_Mustang_GT_5.0_Front.jpg) |
