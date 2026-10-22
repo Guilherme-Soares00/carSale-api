@@ -50,16 +50,15 @@ java -jar target/carsale-api-1.0.0.jar
 
 ## Contas de desenvolvimento
 
-O perfil padrão é `dev`. Ele cria seis carros e duas contas locais:
+O perfil padrão é `dev`. A carga inicial em `src/main/resources/data.sql` mantém seis carros e as três contas originais do exercício:
 
-| Usuário | Perfil |
-| --- | --- |
-| `usuario` | `ROLE_USER` |
-| `admin` | `ROLE_ADMIN` |
+| Nome | Usuário | Perfil |
+| --- | --- | --- |
+| Alice Smith | `alice.smith` | `ROLE_ADMIN` |
+| Bob Johnson | `bob.johnson` | `ROLE_USER` |
+| Charlie Brown | `charlie.brown` | `ROLE_USER` |
 
-As senhas são geradas aleatoriamente a cada inicialização e aparecem uma vez no console com o prefixo `CARSALE DEV`. Não há senha fixa no código. Use as senhas exibidas para entrar no frontend.
-
-Para escolher suas próprias senhas, adicione `CARSALE_USER_PASSWORD` e `CARSALE_ADMIN_PASSWORD` às variáveis de ambiente da configuração de execução do IntelliJ. Cada senha deve ter pelo menos 12 caracteres e no máximo 72 bytes em UTF-8. Reinicie a aplicação depois de configurar as variáveis.
+Os hashes BCrypt originais foram preservados. Entre com as senhas fornecidas no material da aula; o SQL armazena somente os hashes, não as senhas em texto. Não há geração de novas senhas nem criação das contas `admin` e `usuario`.
 
 O H2 fica em memória: dados e comentários são reiniciados ao encerrar a aplicação. As chaves RSA locais também são temporárias, portanto um reinício invalida tokens anteriores. Faça login novamente após reiniciar o backend.
 
@@ -82,8 +81,8 @@ Login:
 
 ```json
 {
-  "username": "usuario",
-  "password": "senha exibida no console"
+  "username": "bob.johnson",
+  "password": "senha original do exercício"
 }
 ```
 
@@ -108,7 +107,6 @@ Erros possuem `status` e `message`: `400` para entrada inválida, `401` para fal
 - `domain/car`: entidades, repositório, serviço e controller do catálogo.
 - `domain/comments`: comentários, validação, DTOs e autorização por método.
 - `domain/user`: usuários e representação pública sem senha.
-- `config`: carga de usuários somente no perfil de desenvolvimento.
 - `exception`: respostas de erro centralizadas.
 - `props`: configuração das chaves RSA externas.
 
@@ -136,8 +134,6 @@ Os testes exercitam o banco H2, o encoder BCrypt, emissão e validação reais d
 | --- | --- |
 | `PORT` | Porta da API, padrão 8080 |
 | `CARSALE_ALLOWED_ORIGINS` | Origens CORS separadas por vírgula, padrão `http://localhost:3000` |
-| `CARSALE_USER_PASSWORD` | Senha escolhida para a conta local `usuario` |
-| `CARSALE_ADMIN_PASSWORD` | Senha escolhida para a conta local `admin` |
 | `SPRING_PROFILES_ACTIVE` | Perfil ativo; `prod` exige configuração externa |
 | `RSA_PUBLIC_KEY` | Localização da chave pública PEM X.509, por exemplo `file:C:/segredos/public.pem` |
 | `RSA_PRIVATE_KEY` | Localização da chave privada PEM PKCS#8, por exemplo `file:C:/segredos/private.pem` |
